@@ -27,9 +27,9 @@ workflow BAF {
     String gatk_docker
     String sv_mini_docker
     String sv_pipeline_docker
-    RuntimeAttr? runtime_attr_merge_vcfs
-    RuntimeAttr? runtime_attr_baf_gen
-    RuntimeAttr? runtime_attr_gather
+    BAFRuntimeAttr? runtime_attr_merge_vcfs
+    BAFRuntimeAttr? runtime_attr_baf_gen
+    BAFRuntimeAttr? runtime_attr_gather
   }
 
   Array[Array[String]] chroms = read_tsv(chrom_file)
@@ -312,10 +312,10 @@ task GenerateBAF {
     String batch
     String shard
     String sv_pipeline_docker
-    RuntimeAttr? runtime_attr_override
+    BAFRuntimeAttr? runtime_attr_override
   }
 
-  RuntimeAttr default_attr = object {
+  BAFRuntimeAttr default_attr = object {
     cpu_cores: 1, 
     mem_gb: 3.75,
     disk_gb: 10,
@@ -323,7 +323,7 @@ task GenerateBAF {
     preemptible_tries: 3,
     max_retries: 1
   }
-  RuntimeAttr runtime_attr = select_first([runtime_attr_override, default_attr])
+  BAFRuntimeAttr runtime_attr = select_first([runtime_attr_override, default_attr])
 
   output {
     File BAF = "BAF.~{batch}.shard-~{shard}.txt"
@@ -353,10 +353,10 @@ task GatherBAF {
     String batch
     Array[File] BAF
     String sv_mini_docker
-    RuntimeAttr? runtime_attr_override
+    BAFRuntimeAttr? runtime_attr_override
   }
 
-  RuntimeAttr default_attr = object {
+  BAFRuntimeAttr default_attr = object {
     cpu_cores: 1, 
     mem_gb: 3.75,
     disk_gb: 100,
@@ -364,7 +364,7 @@ task GatherBAF {
     preemptible_tries: 3,
     max_retries: 1
   }
-  RuntimeAttr runtime_attr = select_first([runtime_attr_override, default_attr])
+  BAFRuntimeAttr runtime_attr = select_first([runtime_attr_override, default_attr])
 
   output {
     File out = "BAF.~{batch}.txt.gz"
@@ -393,12 +393,12 @@ task ScatterBAFBySample {
     File BAF
     String sample
     String sv_mini_docker
-    RuntimeAttr? runtime_attr_override
+    BAFRuntimeAttr? runtime_attr_override
   }
 
   Int vm_disk_size = ceil(size(BAF, "GB") + 10)
 
-  RuntimeAttr default_attr = object {
+  BAFRuntimeAttr default_attr = object {
     cpu_cores: 1,
     mem_gb: 3.75,
     disk_gb: vm_disk_size,
@@ -406,7 +406,7 @@ task ScatterBAFBySample {
     preemptible_tries: 3,
     max_retries: 1
   }
-  RuntimeAttr runtime_attr = select_first([runtime_attr_override, default_attr])
+  BAFRuntimeAttr runtime_attr = select_first([runtime_attr_override, default_attr])
 
   output {
     File out = "BAF.~{sample}.txt.gz"
