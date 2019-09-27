@@ -10,7 +10,7 @@
 
 version 1.0
 
-import "Structs.wdl"
+import "Structs.wdl" alias RuntimeAttr as BAFRuntimeAttr
 
 workflow BAF {
   input {
