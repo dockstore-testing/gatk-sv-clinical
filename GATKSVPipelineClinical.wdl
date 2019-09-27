@@ -1,19 +1,19 @@
 version 1.0
 
-#import "module00a/Module00a.wdl" as m00a
-#import "module00b/Module00b.wdl" as m00b
-#import "module00b/PloidyEstimation.wdl" as pe
-#import "module00c/Module00c.wdl" as m00c
-#import "module00c/DepthPreprocessing.wdl" as dpn
-#import "module01/Module01.wdl" as m01
-#import "module02/Module02.wdl" as m02
-#import "module02/SRTest.wdl" as SRTest
-#import "module03/Module03.wdl" as m03
-#import "module04/Module04.wdl" as m04
-#import "module05_06/Module05_06.wdl" as m0506
-#import "gcnv/GermlineCNVCase.wdl" as gcnv
-#import "ClinicalFiltering.wdl" as ClinicalFiltering
-#import "Structs.wdl"
+import "module00a/Module00a.wdl" as m00a
+import "module00b/Module00b.wdl" as m00b
+import "module00b/PloidyEstimation.wdl" as pe
+import "module00c/Module00c.wdl" as m00c
+import "module00c/DepthPreprocessing.wdl" as dpn
+import "module01/Module01.wdl" as m01
+import "module02/Module02.wdl" as m02
+import "module02/SRTest.wdl" as SRTest
+import "module03/Module03.wdl" as m03
+import "module04/Module04.wdl" as m04
+import "module05_06/Module05_06.wdl" as m0506
+import "gcnv/GermlineCNVCase.wdl" as gcnv
+import "ClinicalFiltering.wdl" as ClinicalFiltering
+import "Structs.wdl"
 
 # GATK SV Pipeline single sample mode
 # Runs Modules 00abc, 01, 03.MergePesrVcfs, 04, 05/06
