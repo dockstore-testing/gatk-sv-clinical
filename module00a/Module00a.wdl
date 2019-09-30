@@ -6,7 +6,7 @@
 
 version 1.0
 
-import "Structs.wdl"
+import "Structs_module00a.wdl"
 import "BAF.wdl" as baf
 import "CollectCoverage.wdl" as cov
 import "CramToBam.wdl" as ctb

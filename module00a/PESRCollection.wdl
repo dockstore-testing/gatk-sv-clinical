@@ -8,7 +8,7 @@
 
 version 1.0
 
-import "Structs.wdl"
+import "Structs_module00a.wdl"
 
 # Workflow to run PE/SR collection on a single sample
 workflow PESRCollection {

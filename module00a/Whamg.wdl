@@ -1,6 +1,6 @@
 version 1.0
 
-import "Structs.wdl"
+import "Structs_module00a.wdl"
 import "CramToBam.wdl" as ctb
 
 # Run Whamg SV detection algorithm on whole genome in bam or cram

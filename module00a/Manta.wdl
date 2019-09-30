@@ -23,7 +23,7 @@
 
 version 1.0
 
-import "Structs.wdl"
+import "Structs_module00a.wdl"
 
 workflow Manta {
   input {
